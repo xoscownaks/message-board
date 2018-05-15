@@ -6,15 +6,33 @@
     // PDO のインスタンスを生成して、MySQLサーバに接続
     $pdo = new PDO('mysql:host=localhost;dbname=message-board;charset=UTF8;', $username, $password);
 
-    if(isset($_POST['title'])){
-  
-        $sql = "INSERT INTO messages(title,message) VALUES (:title, :message)";
-        $stt = $pdo->prepare($sql);
-        $stt->bindParam(':title', $_POST['title']);
-        $stt->bindParam(':message', $_POST['message']);
-        $stt->execute();
-        echo '<script type="text/javascript">alert("success");</script>';
-        echo "<script>location.replace('/message-board-noframe/index.php');</script>"; 
+    if($_POST['newData']){
+        if(isset($_FILES['uploadFile']) && !$_FILES['uploadFile']['error']){
+            $imageKind = array ('image/jpeg', 'image/JPG', 'image/jpg', 'image/PNG', 'image/png');
+            if(in_array($_FILES['uploadFile']['type'], $imageKind)){
+                $filename = $_FILES['uploadFile']['name'];
+                $filepath = $_FILES['uploadFile']['tmp_name'];
+                $location = $filename.date("YmdHis");
+                $security_filename = "src/".base64_encode($location);
+                
+                move_uploaded_file($filepath,$security_filename);
+                
+                $sql = "INSERT INTO messages(title,message,img) VALUES (:title, :message, :img)";
+                $stt = $pdo->prepare($sql);
+                $stt->bindParam(':title', $_POST['title']);
+                $stt->bindParam(':message', $_POST['message']);
+                $stt->bindParam(':img', $security_filename);
+                $stt->execute();
+                echo '<script type="text/javascript">alert("success");</script>';
+                echo "<script>location.replace('/message-board-noframe/index.php');</script>"; 
+                
+            }else{
+                echo "<script>alert('파일이 올바르지 않습니다.')</script>";
+                print "<script>history.go(-1)</script>";
+                
+            }
+        }
+        
     }
 
 ?>
@@ -58,7 +76,7 @@
     <h1>新規メッセージ</h1>
     <div class="row">
         <div class="col-xs-6">
-            <form method="POST" action="/message-board-noframe/insertPage.php" accept-charset="UTF-8">
+            <form method="POST" action="/message-board-noframe/insertPage.php" accept-charset="UTF-8" enctype="multipart/form-data">
             
                 <div class="form-group">
                     <label for="title">タイトル:</label>
@@ -70,8 +88,17 @@
                     <input class="form-control" name="message" type="text" id="content">
                 </div>
                 
-                <input class="btn btn-primary" type="submit" value="投稿">
-        
+                <input type="file" name="uploadFile">
+
+                <!--<input id="lefile" type="file" style="display:none">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="select file...">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-info" onclick="$('input[id=lefile]').click();">FILE</button>
+                    </span>
+                </div>-->
+                <br>
+                <input class="btn btn-primary" type="submit" value="投稿" name="newData">
             </form>
         </div>
     </div>

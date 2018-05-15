@@ -16,6 +16,7 @@
     $id         = $row['id'];
     $title      = $row['title'];
     $message    = $row['message'];
+    $img_path   = $row['img'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -81,7 +82,16 @@
                     ?>
                 </td>
             </tr>
-        
+            <tr>
+                <td>image</td>
+                <td>
+                    <img src=
+                        <?php
+                            echo $img_path;
+                        ?>
+                    ></img>
+                </td>
+            </tr>
         </table>
         <?php
             echo "<a href='/message-board-noframe/editMessage.php?messageid=$id' class='btn btn-default'>";
