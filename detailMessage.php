@@ -46,11 +46,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/message-board-noframe/index.php">MessageBoard</a>
+                    <a class="navbar-brand" href="/index.php">MessageBoard</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/message-board-noframe/insertPage.php">新規メッセージの投稿</a></li>
+                        <li><a href="/insertPage.php">新規メッセージの投稿</a></li>
                     </ul>
                 </div>
             </div>
@@ -94,7 +94,7 @@
             </tr>
         </table>
         <?php
-            echo "<a href='/message-board-noframe/editMessage.php?messageid=$id' class='btn btn-default'>";
+            echo "<a href='/editMessage.php?messageid=$id' class='btn btn-default'>";
             echo "Edit Message";
             echo "</a>";
             
@@ -118,7 +118,7 @@
               </div>
               <div class="modal-footer">
                 <!--<input type="submit" class="btn btn-default"  data-dismiss="modal" value="Delete"/>-->
-                <a href="/message-board-noframe/deleteMessage.php?messageid=<?php echo $id ?>">Delete</a>
+                <a href="/deleteMessage.php?messageid=<?php echo $id ?>">Delete</a>
                 <a class="btn btn-default" data-dismiss="modal">Cancle</a>
               </div>
             </div>

@@ -13,5 +13,5 @@
     $stt->bindParam(':id',$id);
     $stt->execute();
     echo '<script type="text/javascript">alert("success");</script>';
-    echo "<script>location.replace('/message-board-noframe/index.php');</script>"; 
+    echo "<script>location.replace('/index.php');</script>"; 
 ?>

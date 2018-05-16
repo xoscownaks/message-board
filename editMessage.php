@@ -47,11 +47,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/message-board-noframe/index.php">MessageBoard</a>
+                    <a class="navbar-brand" href="/index.php">MessageBoard</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/message-board-noframe/insertPage.php">新規メッセージの投稿</a></li>
+                        <li><a href="/insertPage.php">新規メッセージの投稿</a></li>
                     </ul>
                 </div>
             </div>
@@ -59,7 +59,7 @@
     </header> 
     
     
-    <form action="/message-board-noframe/edit.php?id=<?php echo $id ?>" method="post">
+    <form action="/edit.php?id=<?php echo $id ?>" method="post">
         
         <div class="form-group">
             <label for="title">タイトル:</label>

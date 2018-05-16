@@ -24,7 +24,7 @@
                 $stt->bindParam(':img', $security_filename);
                 $stt->execute();
                 echo '<script type="text/javascript">alert("success");</script>';
-                echo "<script>location.replace('/message-board-noframe/index.php');</script>"; 
+                echo "<script>location.replace('/index.php');</script>"; 
                 
             }else{
                 echo "<script>alert('파일이 올바르지 않습니다.')</script>";
@@ -63,11 +63,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/message-board-noframe/index.php">MessageBoard</a>
+                    <a class="navbar-brand" href="/index.php">MessageBoard</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/message-board-noframe/insertPage.php">新規メッセージの投稿</a></li>
+                        <li><a href="/insertPage.php">新規メッセージの投稿</a></li>
                     </ul>
                 </div>
             </div>
@@ -76,7 +76,7 @@
     <h1>新規メッセージ</h1>
     <div class="row">
         <div class="col-xs-6">
-            <form method="POST" action="/message-board-noframe/insertPage.php" accept-charset="UTF-8" enctype="multipart/form-data">
+            <form method="POST" action="/insertPage.php" accept-charset="UTF-8" enctype="multipart/form-data">
             
                 <div class="form-group">
                     <label for="title">タイトル:</label>
